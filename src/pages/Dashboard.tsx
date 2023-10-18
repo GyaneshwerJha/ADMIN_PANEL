@@ -4,8 +4,20 @@ import { BsSearch } from "react-icons/bs";
 import userImg from "../assets/blue-icon-13470.jpg";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import data from "../assets/data.json";
+import { BarChart, DoughnutChart } from "../components/Charts.jsx";
+import { BiMaleFemale } from "react-icons/bi";
 
 const Dashboard = () => {
+  const data_1 = Array.from({ length: 7 }, () =>
+    Math.floor(Math.random() * 9999)
+  );
+  const data_2 = Array.from({ length: 7 }, () =>
+    Math.floor(Math.random() * 9999)
+  );
+  const data_3 = Array.from({ length: 2 }, () =>
+    Math.floor(Math.random() * 50)
+  );
+
   return (
     <div className="admin-container">
       <AdminSidebar />
@@ -48,6 +60,14 @@ const Dashboard = () => {
         <section className="graph-container">
           <div className="revenue-chart">
             <h2>Revenue & Transaction</h2>
+            <BarChart
+              data_1={data_1}
+              data_2={data_2}
+              title_1="Revenue"
+              title_2="Transaction"
+              bgColor_1="rgba(0, 115, 255)"
+              bgColor_2="rgba(53, 162, 235, 0.8)"
+            />
           </div>
           <div className="dashboard-categories">
             <h2>Inventory</h2>
@@ -61,6 +81,22 @@ const Dashboard = () => {
                 />
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="transaction-container">
+          <div className="gender-chart">
+            <h2>Gender Ratio</h2>
+            <DoughnutChart
+              labels={["Female", "Male"]}
+              data={data_3}
+              backgroundColor={["hsl(340,82%,56%)", "rgba(53,162,235,0.8)"]}
+              cutout={90}
+            />
+            {/* Chart */}
+            <p>
+              <BiMaleFemale />
+            </p>
           </div>
         </section>
       </main>
