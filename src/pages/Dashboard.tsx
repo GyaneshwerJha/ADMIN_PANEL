@@ -6,7 +6,7 @@ import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import data from "../assets/data.json";
 import { BarChart, DoughnutChart } from "../components/Charts.jsx";
 import { BiMaleFemale } from "react-icons/bi";
-
+import DashboardTable from "../components/DashBoardTable.tsx"
 const Dashboard = () => {
   const data_1 = Array.from({ length: 7 }, () =>
     Math.floor(Math.random() * 9999)
@@ -93,11 +93,12 @@ const Dashboard = () => {
               backgroundColor={["hsl(340,82%,56%)", "rgba(53,162,235,0.8)"]}
               cutout={90}
             />
-            {/* Chart */}
             <p>
               <BiMaleFemale />
             </p>
           </div>
+
+          <DashboardTable data={data.transaction}/>
         </section>
       </main>
     </div>
